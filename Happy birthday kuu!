@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Beloved Kuu!</title>
+    <style>
+        body {
+            background-color: #e0f2fe; /* Soft light blue */
+            color: #0f172a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align: center;
+            position: relative;
+        }
+
+        /* STICKER / PRINTILAN LUCU MELAYANG DI LATAR BELAKANG */
+        .floating-sticker {
+            position: absolute;
+            font-size: 24px;
+            animation: floatSlow 4s ease-in-out infinite;
+            z-index: 0;
+            opacity: 0.6;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .s1 { top: 10%; left: 15%; animation-delay: 0s; }
+        .s2 { top: 20%; right: 15%; animation-delay: 1s; font-size: 30px; }
+        .s3 { bottom: 15%; left: 10%; animation-delay: 2s; font-size: 28px; }
+        .s4 { bottom: 20%; right: 12%; animation-delay: 1.5s; }
+        .s5 { top: 50%; left: 5%; animation-delay: 0.5s; }
+        .s6 { top: 45%; right: 8%; animation-delay: 2.5s; }
+
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 90%;
+            border: 2px solid #bae6fd;
+            position: relative;
+            z-index: 1;
+            margin: 30px 0;
+        }
+
+        h1 {
+            color: #0284c7;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #0ea5e9;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            background-color: #0284c7;
+        }
+
+        #noBtn {
+            background-color: #cbd5e1;
+            color: #475569;
+            position: absolute;
+        }
+
+        #hiddenMessage {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .main-character-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px auto;
+            border: 3px solid #0ea5e9;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+        }
+
+        .main-character-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .memory-section {
+            margin-top: 25px;
+            border-top: 2px dashed #bae6fd;
+            padding-top: 20px;
+            text-align: left;
+        }
+
+        .memory-item {
+            margin-bottom: 20px;
+            background-color: #f8fafc;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .memory-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .memory-text {
+            font-size: 14px;
+            color: #334155;
+            margin: 0;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="floating-sticker s1">⭐</div>
+    <div class="floating-sticker s2">🎂</div>
+    <div class="floating-sticker s3">✨</div>
+    <div class="floating-sticker s4">💙</div>
+    <div class="floating-sticker s5">🎂</div>
+    <div class="floating-sticker s6">⭐</div>
+
+    <div class="card">
+        <div id="questionSection">
+            <h1>Happy Birthday! 🎉</h1>
+            <p style="text-align: center;">Hey there... Do you know what today is? My beloved Kuu, will you accept this special wish from me?</p>
+            
+            <div class="buttons" id="buttonArea">
+                <button id="yesBtn" onclick="sayYes()">Yes</button>
+                <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No</button>
+            </div>
+        </div>
+
+        <div id="hiddenMessage">
+            <!-- FOTO UTAMA: Gambar buatanmu -->
+            <div class="main-character-img">
+                <img src="https://cdn.discordapp.com/attachments/1556271946453483570/1566509648788590743/Tak_berjudul22_20261102013543.jpg?ex=6ae8cd4c&is=6ae77bcc&hm=3c767bede9e235b4b3b48b84a6f14c0664dff884efc15da2e609b899140532a8&" alt="Character holding cake">
+            </div>
+
+            <h1>Happy Birthday, My Beloved Kuu! 💙✨</h1>
+            
+            <!-- SURAT UTAMA -->
+            <p>
+                On this happy day, I just want to say a huge thank you to your mother for bringing you into this world and making you a part of my happiest days. Thank you for standing by my side right now, sharing your stories, laughter, and even your sadness.
+            </p>
+            <p>
+                I hope that as you grow a year older, you are always given good health and the strength to chase all your dreams. It is never too late to start anything new, along with endless happiness.
+            </p>
+            <p style="text-align: center; font-weight: bold; color: #0284c7;">
+                Happy birthday, My beloved kuu! 🎂💙
+            </p>
+
+            <!-- GALERI 3 FOTO KENANGAN -->
+            <div class="memory-section">
+                <h3 style="color: #0284c7; text-align: center; font-size: 18px; margin-bottom: 15px;">Our Little Memories 🎮✨</h3>
+
+                <!-- Kenangan 1 -->
+                <div class="memory-item">
+                    <img src="https://cdn.discordapp.com/attachments/1556271946453483570/1566509661237026856/IMG_20261101_140258.jpg?ex=6ae8cd4f&is=6ae77bcf&hm=553123485fc5b92f531d8862dca9deaac06313770c90154719f9f74c9d531589&" alt="Memory 1">
+                    <p class="memory-text">"Remember when we explored this place together? Such a fun day with My beloved Kuu, my favorite partner!"</p>
+                </div>
+
+                <!-- Kenangan 2 -->
+                <div class="memory-item">
+                    <img src="https://cdn.discordapp.com/attachments/1556271946453483570/1566509672285077534/IMG_20261101_135853.jpg?ex=6ae8cd52&is=6ae77bd2&hm=f08e62699c7e115c32315be9d419eb4d08a6220e3646f6edfdacb220c99eefdc&" alt="Memory 2">
+                    <p class="memory-text">"The moment when the sweetest surprise for my birthday came along with my favorite person, My beloved Kuu."</p>
+                </div>
+
+                <!-- Kenangan 3 -->
+                <div class="memory-item">
+                    <img src="https://cdn.discordapp.com/attachments/1556271946453483570/1566509655281373406/IMG_20261101_140615.jpg?ex=6ae8cd4e&is=6ae77bce&hm=29903f367ecafe9c5becf177e21a5e72d4f0dd6abd6c10cc2517e663cef61bbd&" alt="Memory 3">
+                    <p class="memory-text">"Our cozy moments hanging out in the game. Never a dull moment with you, my favorite partner!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Background MP3 ("bad" by wave to earth) -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.discordapp.com/attachments/1556271946453483570/1566508968376008744/wave_to_earth_-_bad_mp3.pm.mp3?ex=6ae8ccaa&is=6ae77b2a&hm=b541e2c5ccf19c8553d61c2c853480a2226dfbf77d918f73889a9890ab1c5bad&" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const noMessages = [
+            "Are you sure, My beloved Kuu?",
+            "Think again!",
+            "You cannot click No!",
+            "Just click Yes already :P",
+            "Nice try, but No is not an option!"
+        ];
+        let clickCount = 0;
+
+        function moveNo() {
+            const noBtn = document.getElementById('noBtn');
+            const card = document.querySelector('.card');
+            
+            const maxX = card.clientWidth - noBtn.clientWidth - 40;
+            const maxY = 100;
+            
+            const randomX = Math.floor(Math.random() * maxX) - (maxX / 2);
+            const randomY = Math.floor(Math.random() * maxY) - 20;
+
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+            if (clickCount < noMessages.length) {
+                noBtn.innerText = noMessages[clickCount];
+                clickCount++;
+            } else {
+                noBtn.innerText = "Okay fine, click Yes!";
+            }
+        }
+
+        function sayYes() {
+            document.getElementById('questionSection').style.display = 'none';
+            document.getElementById('hiddenMessage').style.display = 'block';
+            
+            // Memutar lagu MP3 wave to earth - bad saat tombol Yes diklik
+            const music = document.getElementById('bgMusic');
+            music.play().catch(error => {
+                console.log("Audio autoplay restricted by browser:", error);
+            });
+        }
+    </script>
+
+</body>
+</html>
